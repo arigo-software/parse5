@@ -41,6 +41,7 @@ export const SEQUENCES = {
     CDATA_START: '[CDATA[',
     DOCTYPE: 'doctype',
     SCRIPT: 'script',
+    RUMO_SCRIPT: 'rumo-script',
     PUBLIC: 'public',
     SYSTEM: 'system',
 };

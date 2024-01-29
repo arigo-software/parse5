@@ -113,6 +113,10 @@ export class ParserFeedbackSimulator implements TokenHandler {
                 this.tokenizer.state = TokenizerMode.SCRIPT_DATA;
                 break;
             }
+            case $.RUMO_SCRIPT: {
+                this.tokenizer.state = TokenizerMode.SCRIPT_DATA;
+                break;
+            }
             case $.STYLE:
             case $.IFRAME:
             case $.XMP:

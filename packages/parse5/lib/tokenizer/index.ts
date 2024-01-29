@@ -1469,6 +1469,16 @@ export class Tokenizer {
             }
 
             this.state = State.SCRIPT_DATA_DOUBLE_ESCAPED;
+        } else if (
+            this.preprocessor.startsWith($$.RUMO_SCRIPT, false) &&
+            isScriptDataDoubleEscapeSequenceEnd(this.preprocessor.peek($$.RUMO_SCRIPT.length))
+        ) {
+            this._emitCodePoint(cp);
+            for (let i = 0; i < $$.RUMO_SCRIPT.length; i++) {
+                this._emitCodePoint(this._consume());
+            }
+
+            this.state = State.SCRIPT_DATA_DOUBLE_ESCAPED;
         } else if (!this._ensureHibernation()) {
             this.state = State.SCRIPT_DATA_ESCAPED;
             this._stateScriptDataEscaped(cp);
@@ -1594,6 +1604,16 @@ export class Tokenizer {
         ) {
             this._emitCodePoint(cp);
             for (let i = 0; i < $$.SCRIPT.length; i++) {
+                this._emitCodePoint(this._consume());
+            }
+
+            this.state = State.SCRIPT_DATA_ESCAPED;
+        } else if (
+            this.preprocessor.startsWith($$.RUMO_SCRIPT, false) &&
+            isScriptDataDoubleEscapeSequenceEnd(this.preprocessor.peek($$.RUMO_SCRIPT.length))
+        ) {
+            this._emitCodePoint(cp);
+            for (let i = 0; i < $$.RUMO_SCRIPT.length; i++) {
                 this._emitCodePoint(this._consume());
             }
 

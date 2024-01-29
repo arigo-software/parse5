@@ -374,6 +374,10 @@ export class Parser<T extends TreeAdapterTypeMap> implements TokenHandler, Stack
                 this.tokenizer.state = TokenizerMode.SCRIPT_DATA;
                 break;
             }
+            case $.RUMO_SCRIPT: {
+                this.tokenizer.state = TokenizerMode.SCRIPT_DATA;
+                break;
+            }
             case $.PLAINTEXT: {
                 this.tokenizer.state = TokenizerMode.PLAINTEXT;
                 break;
@@ -1716,6 +1720,10 @@ function startTagInHead<T extends TreeAdapterTypeMap>(p: Parser<T>, token: TagTo
             p._switchToTextParsing(token, TokenizerMode.SCRIPT_DATA);
             break;
         }
+        case $.RUMO_SCRIPT: {
+            p._switchToTextParsing(token, TokenizerMode.SCRIPT_DATA);
+            break;
+        }
         case $.TEMPLATE: {
             p._insertTemplate(token);
             p.activeFormattingElements.insertMarker();
@@ -1860,6 +1868,7 @@ function startTagAfterHead<T extends TreeAdapterTypeMap>(p: Parser<T>, token: Ta
         case $.META:
         case $.NOFRAMES:
         case $.SCRIPT:
+        case $.RUMO_SCRIPT:
         case $.STYLE:
         case $.TEMPLATE:
         case $.TITLE: {
@@ -2386,6 +2395,7 @@ function startTagInBody<T extends TreeAdapterTypeMap>(p: Parser<T>, token: TagTo
         case $.STYLE:
         case $.TITLE:
         case $.SCRIPT:
+        case $.RUMO_SCRIPT:
         case $.BGSOUND:
         case $.BASEFONT:
         case $.TEMPLATE: {
@@ -2727,7 +2737,7 @@ function eofInBody<T extends TreeAdapterTypeMap>(p: Parser<T>, token: EOFToken):
 // The "text" insertion mode
 //------------------------------------------------------------------
 function endTagInText<T extends TreeAdapterTypeMap>(p: Parser<T>, token: TagToken): void {
-    if (token.tagID === $.SCRIPT) {
+    if (token.tagID === $.SCRIPT || token.tagID === $.RUMO_SCRIPT) {
         p.scriptHandler?.(p.openElements.current);
     }
 
@@ -2836,6 +2846,7 @@ function startTagInTable<T extends TreeAdapterTypeMap>(p: Parser<T>, token: TagT
         }
         case $.STYLE:
         case $.SCRIPT:
+        case $.RUMO_SCRIPT:
         case $.TEMPLATE: {
             startTagInHead(p, token);
             break;
@@ -3324,6 +3335,7 @@ function startTagInSelect<T extends TreeAdapterTypeMap>(p: Parser<T>, token: Tag
             break;
         }
         case $.SCRIPT:
+        case $.RUMO_SCRIPT:
         case $.TEMPLATE: {
             startTagInHead(p, token);
             break;
@@ -3429,6 +3441,7 @@ function startTagInTemplate<T extends TreeAdapterTypeMap>(p: Parser<T>, token: T
         case $.META:
         case $.NOFRAMES:
         case $.SCRIPT:
+        case $.RUMO_SCRIPT:
         case $.STYLE:
         case $.TEMPLATE:
         case $.TITLE: {

@@ -139,6 +139,7 @@ export enum TAG_NAMES {
 
     S = 's',
     SCRIPT = 'script',
+    RUMO_SCRIPT = 'rumo-script',
     SEARCH = 'search',
     SECTION = 'section',
     SELECT = 'select',
@@ -293,6 +294,7 @@ export enum TAG_ID {
 
     S,
     SCRIPT,
+    RUMO_SCRIPT,
     SEARCH,
     SECTION,
     SELECT,
@@ -425,6 +427,7 @@ const TAG_NAME_TO_ID = new Map<string, TAG_ID>([
     [TAG_NAMES.RUBY, TAG_ID.RUBY],
     [TAG_NAMES.S, TAG_ID.S],
     [TAG_NAMES.SCRIPT, TAG_ID.SCRIPT],
+    [TAG_NAMES.RUMO_SCRIPT, TAG_ID.RUMO_SCRIPT],
     [TAG_NAMES.SEARCH, TAG_ID.SEARCH],
     [TAG_NAMES.SECTION, TAG_ID.SECTION],
     [TAG_NAMES.SELECT, TAG_ID.SELECT],
@@ -527,6 +530,7 @@ export const SPECIAL_ELEMENTS: Record<NS, Set<TAG_ID>> = {
         $.PLAINTEXT,
         $.PRE,
         $.SCRIPT,
+        $.RUMO_SCRIPT,
         $.SECTION,
         $.SELECT,
         $.SOURCE,
@@ -559,6 +563,7 @@ export const NUMBERED_HEADERS = new Set([$.H1, $.H2, $.H3, $.H4, $.H5, $.H6]);
 const UNESCAPED_TEXT = new Set<string>([
     TAG_NAMES.STYLE,
     TAG_NAMES.SCRIPT,
+    TAG_NAMES.RUMO_SCRIPT,
     TAG_NAMES.XMP,
     TAG_NAMES.IFRAME,
     TAG_NAMES.NOEMBED,
