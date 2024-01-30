@@ -1,6 +1,6 @@
 {
-    "name": "parse5-build-scripts",
-    "private": true,
+    "name": "@arigo-software/parse5-build-scripts",
+    "private": false,
     "type": "module",
     "workspaces": [
         "packages/*",
@@ -22,10 +22,9 @@
         "ts-jest": "^29.1.1",
         "ts-node": "^10.9.2",
         "typedoc": "^0.25.7",
-        "typescript": "^5.1.6"
+        "typescript": "~5.1.6"
     },
     "scripts": {
-        "install": "npm run build",
         "build": "npm run build:esm && npm run build:cjs --workspaces --if-present",
         "build:esm": "tsc --build packages/* test",
         "build:docs": "typedoc",
