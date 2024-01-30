@@ -15,7 +15,7 @@
 
         "composite": true,
         "declarationMap": true,
-        "sourceMap": true
+        "sourceMap": true,
     },
     "references": [{ "path": "packages/parse5/tsconfig.json" }],
     "typedocOptions": {
@@ -25,6 +25,6 @@
         "readme": "README.md",
         "emit": "docs",
         "excludeInternal": true,
-        "entryPointStrategy": "packages"
-    }
+        "entryPointStrategy": "packages",
+    },
 }
